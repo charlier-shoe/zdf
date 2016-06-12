@@ -1,11 +1,12 @@
-/**
- * Copyright (c) 2016 Oracle and/or its affiliates
- */
 package jp.gr.java_conf.hhayakaw_jp.zdf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author hhayakaw_jp
+ *
+ */
 @SpringBootApplication
 public class Application {
 

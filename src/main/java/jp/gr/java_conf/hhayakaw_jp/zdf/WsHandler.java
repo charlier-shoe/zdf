@@ -10,6 +10,10 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+/**
+ * @author hhayakaw_jp
+ *
+ */
 @Component
 public class WsHandler extends TextWebSocketHandler {
 
