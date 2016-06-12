@@ -1,7 +1,6 @@
 package jp.gr.java_conf.hhayakaw_jp.zdf;
 
 import java.util.Collections;
-import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -36,19 +35,9 @@ public class WsHandler extends TextWebSocketHandler {
             try {
                 e.sendMessage(message);
             } catch (Exception ex) {
-                printException(ex);
+                Utils.printException(ex);
             }
         });
-    }
-
-    private void printException(Exception e) {
-        Optional<Throwable> cause = Optional.ofNullable(e.getCause());
-        cause.ifPresent(c -> {
-            System.out.println("CAUSE: " + c.getMessage());
-            c.printStackTrace();
-        });
-        System.out.println("EXCEPTION: " + e.getMessage());
-        e.printStackTrace();
     }
 
 }

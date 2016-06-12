@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.socket.TextMessage;
 
 /**
- * 
  * @author hhayakaw_jp
  *
  */
@@ -21,11 +20,10 @@ public class ZdfController {
     @RequestMapping(path = "/zun",
                     method = RequestMethod.GET)
     public String Zun() {
-        System.out.println("Zun!");
         try {
             handler.sendTextMessage(new TextMessage("ズン！"));
         } catch (Exception e) {
-            e.printStackTrace();
+            Utils.printException(e);
         }
         return "ズン！";
     }
@@ -33,11 +31,10 @@ public class ZdfController {
     @RequestMapping(path = "/doco",
                     method = RequestMethod.GET)
     public String Doco() {
-        System.out.println("Doco!");
         try {
             handler.sendTextMessage(new TextMessage("ドコ！"));
         } catch (Exception e) {
-            e.printStackTrace();
+            Utils.printException(e);
         }
         return "ドコ！";
     }
