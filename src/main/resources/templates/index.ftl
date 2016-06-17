@@ -12,7 +12,11 @@
                 ws.onclose = function() {
                 };
                 ws.onmessage = function(message) {
-                    $("#result").append(message.data);
+                    if (message.data == 'キヨシ！') {
+                        $("#result").html('<b>' + message.data + '<b>');
+                    } else {
+                        $("#result").prepend(message.data);
+                    }
                 };
                 ws.onerror = function(event) {
                     alert("Failed to connect WebSocket server.");
