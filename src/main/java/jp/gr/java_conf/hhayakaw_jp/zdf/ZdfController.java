@@ -1,7 +1,5 @@
 package jp.gr.java_conf.hhayakaw_jp.zdf;
 
-import java.util.LinkedList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,13 +17,13 @@ public class ZdfController {
     @Autowired
     private WsHandler handler;
 
-    private LinkedList<Boolean> zd = new LinkedList<Boolean>();
+    private int zd = 0x00;
 
     @RequestMapping(path = "/zun",
                     method = RequestMethod.GET)
     public String Zun() {
         try {
-            zd.addFirst(true);
+            zd = zd << 1 | 0x01;
             handler.sendTextMessage(new TextMessage("ズン！"));
         } catch (Exception e) {
             Utils.printException(e);
@@ -37,10 +35,10 @@ public class ZdfController {
                     method = RequestMethod.GET)
     public String Doco() {
         try {
-            zd.addFirst(false);
+            zd = zd << 1;
             handler.sendTextMessage(new TextMessage("ドコ！"));
-            if (zd.get(1) && zd.get(2) && zd.get(3)) {
-                Thread.sleep(1000);
+            if ((zd & 0x1E) == 0x1E) {
+                Thread.sleep(800);
                 handler.sendTextMessage(new TextMessage("キヨシ！"));
                 return "キヨシ！";
             }
